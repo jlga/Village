@@ -14,6 +14,7 @@ namespace Village
         public Texture2D PlayerTexture;
         public Vector2 Position;
         public float Rotation;
+        public float Speed;
         public bool Active;
         public int Health;
         public int Width
@@ -32,12 +33,29 @@ namespace Village
             Position = position;
             Active = true;
             Health = 100;
+            Speed = 100f;
            
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, KeyboardState KBS)
         {
-            
+            var delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (KBS.IsKeyDown(Keys.Up) || KBS.IsKeyDown(Keys.W))
+            {
+                Position.Y -= Speed * delta;
+            }
+            if (KBS.IsKeyDown(Keys.Down) || KBS.IsKeyDown(Keys.S))
+            {
+                Position.Y += Speed * delta;
+            }
+            if (KBS.IsKeyDown(Keys.Right) || KBS.IsKeyDown(Keys.D))
+            {
+                Position.X += Speed * delta;
+            }
+            if (KBS.IsKeyDown(Keys.Left) || KBS.IsKeyDown(Keys.A))
+            {
+                Position.X -= Speed * delta;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

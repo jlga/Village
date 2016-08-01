@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
@@ -15,13 +17,22 @@ namespace Village
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private Texture2D logo;
+        private Texture2D grass;
+        private Texture2D dirt;
         private Rectangle rect;
+        Config config;
+        Vector2 mapsize;
         Player player;
+        Terrain terrain;
         public Game1()
         {
+            config = new Config();
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = config.fullscreen;
+            graphics.PreferredBackBufferWidth = config.width;
+            graphics.PreferredBackBufferHeight = config.height;
+
         }
 
         /// <summary>
@@ -33,8 +44,10 @@ namespace Village
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            mapsize = config.mapsize;
             this.player = new Player();
-            
+            terrain = new Terrain();
+            terrain.Initialize(mapsize);
             base.Initialize();
         }
 
@@ -49,9 +62,13 @@ namespace Village
 
             // TODO: use this.Content to load your game content here
             logo = Content.Load<Texture2D>("logo");
+            grass = Content.Load<Texture2D>("grass_top");
+            dirt = Content.Load<Texture2D>("dirt");
             rect = new Rectangle(-128, -128, 256, 256);
-            player.Initialize(logo,new Vector2(256,256));
-            
+            player.Initialize(grass,new Vector2(256,256));
+
+            terrain.LoadContent(grass, dirt);
+            GC.Collect();
         }
 
         /// <summary>
@@ -77,6 +94,8 @@ namespace Village
             // TODO: Add your update logic here
             player.Update(gameTime, KBS);
             base.Update(gameTime);
+
+            terrain.Update(gameTime);
         }
 
         /// <summary>
@@ -89,6 +108,7 @@ namespace Village
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+            terrain.Draw(spriteBatch);
             player.Draw(spriteBatch);
             spriteBatch.End();
             

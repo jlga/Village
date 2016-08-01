@@ -64,7 +64,7 @@ namespace Village
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(PlayerTexture, Position, null, Color.White, Rotation, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(PlayerTexture, Position, null, Color.Green, Rotation, Vector2.Zero, 10f, SpriteEffects.None, 0f);
         }
     }
 }

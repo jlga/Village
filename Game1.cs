@@ -34,7 +34,7 @@ namespace Village
         {
             // TODO: Add your initialization logic here
             this.player = new Player();
-            FramesPerSecondCounter fps = new FramesPerSecondCounter(100);
+            
             base.Initialize();
         }
 

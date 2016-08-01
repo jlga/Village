@@ -21,8 +21,7 @@ namespace Village
         TerrainTile[,] tileArray;
         public void Initialize(Vector2 mapsize)
         {
-            tileArray = new TerrainTile[(int)mapsize.X, (int)mapsize.Y];
-            
+            tileArray = new TerrainTile[(int)mapsize.X, (int)mapsize.Y];    
         }
 
         public void LoadContent(Texture2D grass, Texture2D dirt)
@@ -37,8 +36,7 @@ namespace Village
             {
                 for (int j = 0; j < tileArray.GetLength(1); j++)
                 {
-
-                    
+                    //TODO: Add Perlin Nois Generator
                     int randomint = r.Next(0, 30);
                     if(randomint<15)
                     {

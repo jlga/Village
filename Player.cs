@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended;
+using MonoGame.Utilities;
 
 namespace Village
 {
@@ -34,6 +36,7 @@ namespace Village
             Active = true;
             Health = 100;
             Speed = 100f;
+            Rotation = 0;
            
         }
 
@@ -56,6 +59,7 @@ namespace Village
             {
                 Position.X -= Speed * delta;
             }
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)

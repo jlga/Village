@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended;
+using MonoGame.Utilities;
+
 
 namespace Village
 {
@@ -31,6 +34,7 @@ namespace Village
         {
             // TODO: Add your initialization logic here
             this.player = new Player();
+            FramesPerSecondCounter fps = new FramesPerSecondCounter(100);
             base.Initialize();
         }
 
@@ -85,7 +89,6 @@ namespace Village
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(logo, rect, Color.White);
             player.Draw(spriteBatch);
             spriteBatch.End();
             

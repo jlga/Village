@@ -11,11 +11,14 @@ namespace Village
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        private Texture2D logo;
+        private Rectangle rect;
+        Player player;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.IsFullScreen = false;
         }
 
         /// <summary>
@@ -27,7 +30,7 @@ namespace Village
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            this.player = new Player();
             base.Initialize();
         }
 
@@ -41,6 +44,10 @@ namespace Village
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            logo = Content.Load<Texture2D>("logo");
+            rect = new Rectangle(-128, -128, 256, 256);
+            player.Initialize(logo,new Vector2(256,256));
+            
         }
 
         /// <summary>
@@ -63,7 +70,7 @@ namespace Village
                 Exit();
 
             // TODO: Add your update logic here
-
+            player.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -76,6 +83,11 @@ namespace Village
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            spriteBatch.Draw(logo, rect, Color.White);
+            player.Draw(spriteBatch);
+            spriteBatch.End();
+            
 
             base.Draw(gameTime);
         }

@@ -35,6 +35,7 @@ namespace Village
             graphics.IsFullScreen = config.fullscreen;
             graphics.PreferredBackBufferWidth = config.width;
             graphics.PreferredBackBufferHeight = config.height;
+            Window.Title = "Village Random Tile Terrain";
 
         }
 

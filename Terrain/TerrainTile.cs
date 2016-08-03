@@ -13,11 +13,12 @@ namespace Village
 {
     class TerrainTile
     {
+        //Rendering
         public Texture2D TileTexture;
         public Color color;
         public Vector2 Position;
+        public Rectangle sourceRect;
         public float Rotation;
-        public bool Active;
         public int Width
         {
             get { return TileTexture.Width; }
@@ -26,6 +27,7 @@ namespace Village
         {
             get { return TileTexture.Height; }
         }
+        bool Active;
 
 
         public void Initialize(Texture2D texture, Vector2 position, Color color)
@@ -35,6 +37,7 @@ namespace Village
             Active = true;
             Rotation = 0;
             this.color = color;
+            sourceRect = new Rectangle(0, 0, 8, 8);
 
         }
 
@@ -45,7 +48,7 @@ namespace Village
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TileTexture, Position, null, color, Rotation, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+            spriteBatch.Draw(TileTexture, Position, sourceRect, color, Rotation, Vector2.Zero, 1f, SpriteEffects.None, 1f);
         }
     }
 }

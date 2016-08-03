@@ -29,14 +29,17 @@ namespace Village
             this.grass = grass;
             this.dirt = dirt;
             grasssize = grass.Width;
+
             Texture2D curTexture;
             Color curColor;
             r = new Random();
+
             for (int i = 0; i < tileArray.GetLength(0); i++)
             {
                 for (int j = 0; j < tileArray.GetLength(1); j++)
                 {
-                    //TODO: Add Perlin Nois Generator
+                    //TODO: Add Perlin Noise Generator
+                    //TODO: Add Texture Aliases
                     int randomint = r.Next(0, 30);
                     if(randomint<15)
                     {
@@ -45,8 +48,8 @@ namespace Village
                     }
                     else
                     {
-                        curTexture = dirt;
-                        curColor = Color.White;
+                        curTexture = grass;
+                        curColor = Color.BurlyWood;
                     }
                     tileArray[i, j] = new TerrainTile();
                     Vector2 position = new Vector2(i * grasssize, j * grasssize);

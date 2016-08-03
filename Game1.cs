@@ -72,7 +72,6 @@ namespace Village
             player.Initialize(grass,new Vector2(256,256));
 
             terrain.LoadContent(grass, dirt);
-            GC.Collect();
         }
 
         /// <summary>
@@ -109,7 +108,6 @@ namespace Village
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             terrain.Draw(spriteBatch);

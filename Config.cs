@@ -15,8 +15,8 @@ namespace Village
     {
         //Map-Generator Settings
         public Vector2 mapsize;
-        int mapx = 210;
-        int mapy = 150;
+        int mapx = 1000;
+        int mapy = 1000;
 
         // Graphics Settings
         public bool fullscreen = false;
@@ -25,6 +25,8 @@ namespace Village
 
         public Config()
         {
+            mapx = width / 8+1;
+            mapy = height / 8+1;
             mapsize = new Vector2(mapx, mapy);
         }
     }

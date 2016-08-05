@@ -19,14 +19,14 @@ namespace Village.Terrain
         int grasssize;
         Random r;
         TerrainTile[,] tileArray;
-        SimplexNoiseGenerator
+        SimplexNoiseGenerator sng;
 
         public void Initialize(Vector2 mapsize)
         {
             tileArray = new TerrainTile[(int)mapsize.X, (int)mapsize.Y];    
         }
 
-        public void LoadContent(Texture2D grass, Texture2D dirt)
+        public void LoadContent(Texture2D grass, Texture2D dirt, Config config)
         {
             this.grass = grass;
             this.dirt = dirt;
@@ -35,14 +35,41 @@ namespace Village.Terrain
             Texture2D curTexture;
             Color curColor;
             r = new Random();
-
+            sng = new SimplexNoiseGenerator(config.seed);
             for (int i = 0; i < tileArray.GetLength(0); i++)
             {
                 for (int j = 0; j < tileArray.GetLength(1); j++)
                 {
+                    
+                    float noise = sng.getDensity(new Vector3(i,j,0));
+                    if (noise < 0.0)
+                    {
+                        curTexture = grass;
+                        curColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        curTexture = grass;
+                        curColor = Color.BurlyWood;
+                    }
+                    tileArray[i, j] = new TerrainTile();
+                    Vector2 position = new Vector2(i * grasssize, j * grasssize);
+                    tileArray[i, j].Initialize(curTexture, position, curColor);
+                    noise = 0;
+
+
+
+
+
+
+
+
+
+
+
                     //TODO: Add Perlin Noise Generator
                     //TODO: Add Texture Aliases
-                    int randomint = r.Next(0, 30);
+                    /*int randomint = r.Next(0, 30);
                     if(randomint<15)
                     {
                         curTexture = grass;
@@ -56,7 +83,7 @@ namespace Village.Terrain
                     tileArray[i, j] = new TerrainTile();
                     Vector2 position = new Vector2(i * grasssize, j * grasssize);
                     tileArray[i, j].Initialize(curTexture, position, curColor);
-                    randomint = 0;
+                    randomint = 0;*/
                 }
             }
         }

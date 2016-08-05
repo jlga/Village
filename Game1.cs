@@ -26,7 +26,7 @@ namespace Village
         Config config;
         Vector2 mapsize;
         Player player;
-        Terrain terrain;
+        Terrain.Terrain terrain;
         public Game1()
         {
             config = new Config();
@@ -50,7 +50,7 @@ namespace Village
             // TODO: Add your initialization logic here
             mapsize = config.mapsize;
             this.player = new Player();
-            terrain = new Terrain();
+            terrain = new Terrain.Terrain();
             terrain.Initialize(mapsize);
             base.Initialize();
         }
@@ -71,7 +71,7 @@ namespace Village
             rect = new Rectangle(-128, -128, 256, 256);
             player.Initialize(grass,new Vector2(256,256));
 
-            terrain.LoadContent(grass, dirt);
+            terrain.LoadContent(grass, dirt,config);
         }
 
         /// <summary>

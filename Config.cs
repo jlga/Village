@@ -17,7 +17,7 @@ namespace Village
         public Vector2 mapsize;
         int mapx = 1000;
         int mapy = 1000;
-        string seed = "testseed";
+        public string seed = "testseed";
 
         // Graphics Settings
         public bool fullscreen = false;

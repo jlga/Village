@@ -74,7 +74,7 @@ namespace Village.Terrain
             float val = 0;
             for (int n = 0; n < octaves; n++)
             {
-                val += noise(v3.x, v3.y, v3.z) * amplitude;
+                val += noise(v3.X, v3.Y, v3.Z) * amplitude;
                 v3 *= lacunarity;
                 amplitude *= persistence;
             }

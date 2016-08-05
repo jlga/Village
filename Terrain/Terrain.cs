@@ -56,34 +56,6 @@ namespace Village.Terrain
                     Vector2 position = new Vector2(i * grasssize, j * grasssize);
                     tileArray[i, j].Initialize(curTexture, position, curColor);
                     noise = 0;
-
-
-
-
-
-
-
-
-
-
-
-                    //TODO: Add Perlin Noise Generator
-                    //TODO: Add Texture Aliases
-                    /*int randomint = r.Next(0, 30);
-                    if(randomint<15)
-                    {
-                        curTexture = grass;
-                        curColor = Color.LightGreen;
-                    }
-                    else
-                    {
-                        curTexture = grass;
-                        curColor = Color.BurlyWood;
-                    }
-                    tileArray[i, j] = new TerrainTile();
-                    Vector2 position = new Vector2(i * grasssize, j * grasssize);
-                    tileArray[i, j].Initialize(curTexture, position, curColor);
-                    randomint = 0;*/
                 }
             }
         }

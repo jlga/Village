@@ -10,7 +10,7 @@ using MonoGame.Extended;
 using MonoGame.Utilities;
 using Village;
 
-namespace Village
+namespace Village.Terrain
 {
     class Terrain
     {
@@ -19,6 +19,8 @@ namespace Village
         int grasssize;
         Random r;
         TerrainTile[,] tileArray;
+        SimplexNoiseGenerator
+
         public void Initialize(Vector2 mapsize)
         {
             tileArray = new TerrainTile[(int)mapsize.X, (int)mapsize.Y];    

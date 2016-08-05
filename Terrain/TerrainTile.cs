@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using MonoGame.Utilities;
 
-namespace Village
+namespace Village.Terrain
 {
     class TerrainTile
     {
